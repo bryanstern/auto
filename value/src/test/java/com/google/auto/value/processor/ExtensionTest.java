@@ -494,7 +494,7 @@ public class ExtensionTest {
         .filter(method -> equivalence()
             .equivalent(method.getReturnType(), extension.generateClassContext.autoValueClass().asType()))
         .collect(Collectors.toSet());
-    assertEquals(expectedBuildMethods, builderContext.buildMethods());
+    assertThat(builderContext.buildMethods()).containsExactlyElementsIn(expectedBuildMethods);
 
     // check setters
     Set<ExecutableElement> expectedSetters = filterByReturnType(
